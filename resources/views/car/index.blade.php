@@ -31,7 +31,8 @@
                                             <small>{{$car->getMaker->name}} </small> 
                                         </div>
                                         <div class="list-block__buttons">
-                                            <a href="{{route('car.edit',[$car])}}"class="btn btn-success">Edit</a></a>
+                                            <a href="{{route('car.edit',[$car])}}"class="btn btn-success">Edit</a>
+                                            <a href="{{route('car.show',[$car])}}"class="btn btn-info">Show</a>
                                             <form  method="POST" action="{{route('car.destroy', [$car])}}">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger">Delete</button>

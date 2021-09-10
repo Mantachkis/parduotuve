@@ -33,6 +33,8 @@ Route::post('car/store', [CarController::class, 'store'])->name('car.store');
 Route::get('car/edit/{car}', [CarController::class, 'edit'])->name('car.edit');
 Route::post('car/update/{car}', [CarController::class, 'update'])->name('car.update');
 Route::post('car/delete/{car}', [CarController::class, 'destroy'])->name('car.destroy');
+Route::get('car/show/{car}', [CarController::class, 'show'])->name('car.show');
+Route::get('car/pdf/{car}', [CarController::class, 'pdf'])->name('car.pdf');
 
 Auth::routes(['register' => false]);
 

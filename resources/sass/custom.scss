@@ -55,3 +55,16 @@ body {
 .navbar {
     border-bottom: 1px solid darkgray;
 }
+.cars-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__size {
+        font-size: 15px;
+        padding: 11px;
+    }
+    &__about {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

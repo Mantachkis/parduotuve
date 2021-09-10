@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Maker;
 use Illuminate\Http\Request;
 use Validator;
+use PDF;
 
 class CarController extends Controller
 {
@@ -80,7 +81,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        return view('car.show', ['car' => $car]);
     }
 
     /**
@@ -136,5 +137,10 @@ class CarController extends Controller
     {
         $car->delete();
         return redirect()->route('car.index')->with('success_message', 'Deleted.');;
+    }
+    public function pdf(Car $car)
+    {
+        $pdf = PDF::loadView('car.pdf', ['car' => $car]);
+        return $pdf->download($car->name . '.pdf');
     }
 }
