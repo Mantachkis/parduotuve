@@ -8,6 +8,7 @@ use Validator;
 
 class MakerController extends Controller
 {
+    const RESULT_IN_PAGE = 10;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +16,8 @@ class MakerController extends Controller
      */
     public function index(Request $request)
     {
-        $makers = Maker::orderBy('name')->get();
+
+        $makers = Maker::orderBy('name')->paginate(self::RESULT_IN_PAGE);
         if ($request->sort) {
             //sortina
             if ('name' == $request->sort && 'asc' == $request->sort_dir) {

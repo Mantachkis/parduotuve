@@ -9,6 +9,7 @@ use Validator;
 
 class CarController extends Controller
 {
+    const RESULT_IN_PAGE = 10;
     /**
      * Display a listing of the resource.
      *
@@ -18,9 +19,9 @@ class CarController extends Controller
     {
         if ($request->search && 'all' == $request->search) {
             //Paieska
-            $cars = Car::where('name', 'like', '%' . $request->s . '%')->orWhere('plate', 'like', '%' . $request->s . '%')->get();
+            $cars = Car::where('name', 'like', '%' . $request->s . '%')->orWhere('plate', 'like', '%' . $request->s . '%')->paginate(self::RESULT_IN_PAGE)->withQueryString();
         } else {
-            $cars = Car::all();
+            $cars = Car::paginate(self::RESULT_IN_PAGE)->withQueryString();
         }
 
         return view('car.index', ['cars' => $cars, 's' => $request->s ?? '']);
@@ -33,7 +34,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        $makers = Maker::all();
+        $makers = Maker::paginate(self::RESULT_IN_PAGE)->withQueryString();
         return view('car.create', ['makers' => $makers]);
     }
 
@@ -90,7 +91,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        $makers = Maker::all();
+        $makers = Maker::paginate(self::RESULT_IN_PAGE)->withQueryString();
         return view('car.edit', ['car' => $car, 'makers' => $makers]);
     }
 

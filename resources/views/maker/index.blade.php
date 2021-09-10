@@ -36,6 +36,7 @@
                         </form>
                     <div class="card-body">
                       <ul class="list-group">
+                            <div class="mb-3"> {{$makers->links()}}</div>
                          @foreach ($makers as $maker)
                             <li class="list-group-item">
                                     <div class="list-block">
@@ -58,6 +59,7 @@
                                 </li>
                             @endforeach
                         </ul>
+                        <div class="mt-3"> {{$makers->links()}}</div>
                     </div>
                 </div>
             </div>

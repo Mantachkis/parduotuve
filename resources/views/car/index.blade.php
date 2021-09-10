@@ -3,9 +3,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card"> 
                     <div class="card-header">Car list</div>
-                       <div class="card-body">
+                        <div class="card-body">
                            <form action="{{route('car.index')}}" method="get">
                                 <fieldset>
                                     <legend>Search</legend>
@@ -21,6 +21,7 @@
                                     </div>
                                 </fieldset>
                             </form>
+                               <div class="mb-3"> {{$cars->links()}}</div>
                             <ul class="list-group">
                                 @foreach ($cars as $car)
                                 <li class="list-group-item">
@@ -40,7 +41,9 @@
                                 </li>
                             @endforeach
                         </ul>
+                          <div class="mt-3"> {{$cars->links()}}</div>
                     </div>
+             
                 </div>
             </div>
         </div>
