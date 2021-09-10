@@ -14,10 +14,16 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cars = Car::all();
-        return view('car.index', ['cars' => $cars]);
+        if ($request->search && 'all' == $request->search) {
+            //Paieska
+            $cars = Car::where('name', 'like', '%' . $request->s . '%')->orWhere('plate', 'like', '%' . $request->s . '%')->get();
+        } else {
+            $cars = Car::all();
+        }
+
+        return view('car.index', ['cars' => $cars, 's' => $request->s ?? '']);
     }
 
     /**

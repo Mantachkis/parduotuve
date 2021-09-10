@@ -34,6 +34,6 @@ Route::get('car/edit/{car}', [CarController::class, 'edit'])->name('car.edit');
 Route::post('car/update/{car}', [CarController::class, 'update'])->name('car.update');
 Route::post('car/delete/{car}', [CarController::class, 'destroy'])->name('car.destroy');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

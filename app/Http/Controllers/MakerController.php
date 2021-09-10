@@ -13,10 +13,21 @@ class MakerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $makers = Maker::all();
-        return view('maker.index', ['makers' => $makers]);
+        $makers = Maker::orderBy('name')->get();
+        if ($request->sort) {
+            //sortina
+            if ('name' == $request->sort && 'asc' == $request->sort_dir) {
+                $makers = Maker::orderBy('name')->get();
+            } else if ('name' == $request->sort && 'desc' == $request->sort_dir) {
+                $makers = Maker::orderBy('name', 'desc')->get();
+            } else {
+                $makers = Maker::all();
+            }
+        }
+
+        return view('maker.index', ['makers' => $makers, 'sortDirection' => $request->sort_dir ?? 'asc']);
     }
 
     /**

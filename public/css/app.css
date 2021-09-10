@@ -10005,16 +10005,18 @@ h3 {
 .card-header {
   font-style: italic;
 }
-.card-header fieldset {
+
+fieldset {
   border: 1px solid black;
   margin: 5px;
   padding: 12px;
   display: flex;
 }
-.card-header fieldset .block {
+fieldset .block {
   margin: 7px;
 }
-.card-header fieldset legend {
+
+legend {
   color: black;
   font-size: 12px;
   display: inline-block;

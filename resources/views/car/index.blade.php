@@ -4,8 +4,23 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit car</div>
+                    <div class="card-header">Car list</div>
                        <div class="card-body">
+                           <form action="{{route('car.index')}}" method="get">
+                                <fieldset>
+                                    <legend>Search</legend>
+                                    <div class="block">
+                                        <div class="form-group">
+                                            <input class="form-control" type="text" placeholder="Search" name="s" value="{{$s}}">
+                                            <small class="form-text text-muted">Search from cars.</small>
+                                        </div>
+                                    </div>
+                                    <div class="block">
+                                        <button type="submit" class="btn btn-info" name="search" value="all">Search</button>
+                                        <a href="{{route('car.index')}}" class="btn btn-warning">Reset</a>
+                                    </div>
+                                </fieldset>
+                            </form>
                             <ul class="list-group">
                                 @foreach ($cars as $car)
                                 <li class="list-group-item">
